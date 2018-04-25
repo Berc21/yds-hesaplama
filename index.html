@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>YDS Hesaplama</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+</head>
+
+<body>
+
+
+
+        <div class="container">
+
+                <h1  class="title is-1 is-size-2-mobile has-text-black-ter has-text-centered has-text-weight-semibold" style="margin-top: 30px;">YDS Hesaplama</h1>
+                
+                <div class="box" style="margin-top: 2rem; margin-left: 1rem; margin-right: 1rem;">
+
+                <div class="notification is-danger"  style="max-width: 30rem;margin: 20px auto;">
+                        <p> Lütfen sadece "1 ile 80" arasında bir  <strong> sayı </strong> giriniz </p>
+                 </div>
+
+                <div class="field"  style="max-width: 30rem;margin: 0 auto;">
+                        <div class="control">
+                          <input id="input" class="input is-large" type="text" placeholder="Sayıyı giriniz">
+                        </div>
+                </div>
+
+                  <p style="max-width: 30rem; margin: 30px auto;" class="title is-1" > Sonuç:  <span  id="message" class="has-text-danger"  ></span> </p>
+                </div>
+
+            </div>
+    
+
+            <script>
+
+               class Yds { 
+  
+                        constructor(dogru) {
+                            this.maxDogru = 80;
+                            this.dogru = dogru;
+                            this.puan;
+                        }
+                        
+                        calculate() {
+                            var makeNumber = Number(this.dogru)
+
+                            if (this.dogru > this.maxDogru || !Number.isInteger(makeNumber)) return "Lütfen sadece '1 ile 80' arasında bir sayı giriniz";
+                            
+                            this.puan =  this.dogru*1.25;
+
+                            return this.puan;
+                            
+                        } 
+                        }
+
+                        let inputYDS = document.getElementById('input');
+                        let messageYDS = document.getElementById('message');
+
+                         inputYDS.addEventListener('input' , function(e) {
+
+                            let point = new Yds(this.value);
+                            
+                            return messageYDS.innerText = point.calculate();
+                          
+                            });
+  
+            </script>
+</body>
+</html>
